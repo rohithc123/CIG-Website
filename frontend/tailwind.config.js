@@ -4,9 +4,21 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
+    theme: {
+      extend: {
+        fontFamily: {
+          inter: ['Inter', 'sans-serif'],
+          montserrat: ['Montserrat', 'sans-serif'],
+          poppins: ['Poppins', 'sans-serif'],
+          cormorant: ['Cormorant Garamond', 'serif'],
+        },
+        screens: {
+          'max-xl': { 'max': '1200px' }, // Custom max-width breakpoint
+        },
+      },
+    
+    },
+  
   plugins: [],
 }
 
