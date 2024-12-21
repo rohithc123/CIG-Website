@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react'
 
 const Loader = () => {
@@ -14,7 +15,7 @@ const Loader = () => {
         {loading && (
           <div className="fixed inset-0 flex items-center justify-center bg-white bg-[url('./assets/loader.gif')] bg-no-repeat bg-center z-[100]">
           </div>
-        )}
+        )} 
       </>
     );
 

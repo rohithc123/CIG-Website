@@ -1,6 +1,8 @@
+import React from "react"
+
 const Footer = () => {
     return (
-        <footer className="w-full h-30 bg-[#3C4DC2] flex flex-col items-center justify-evenly text-white font-medium text-lg font-montserrat mt-4">
+        <footer className="w-full h-30 bg-[#3C4DC2] flex flex-col items-center justify-evenly text-white font-medium text-lg font-montserrat">
             <div className="flex m-3 space-x-6">
                 <a href="https://www.instagram.com/cig_iitr/">
                     <img

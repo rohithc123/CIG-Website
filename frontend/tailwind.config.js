@@ -14,6 +14,7 @@ export default {
         },
         screens: {
           'max-xl': { 'max': '1200px' }, // Custom max-width breakpoint
+          'max-900': { 'max': '900px' }, // Custom max-width breakpoint
         },
       },
     

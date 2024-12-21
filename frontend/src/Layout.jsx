@@ -7,8 +7,8 @@ import { Outlet } from "react-router-dom";
 function Layout(){
     return(
         <>
-        <Loader/>
         <Header/>
+        <Loader/>
         <Outlet/>
         <Footer/>
         </>
