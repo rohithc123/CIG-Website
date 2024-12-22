@@ -29,7 +29,7 @@ const Header = () => {
                 </div>
 
                 <button
-                    className="text-white text-3xl sm:hidden focus:outline-none z-50 absolute top-4 right-4"
+                    className={`text-white text-3xl ${isMenuOpen ? "fixed" : ""} sm:hidden focus:outline-none z-50 top-3 right-9`}
                     onClick={toggleMenu}
                 >
                     <i className={`fas z-50 ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>

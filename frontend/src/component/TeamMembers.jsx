@@ -23,14 +23,18 @@ const TeamMembers = () => {
             designation: "Executive",
             contactLinks: [
                 { href: "tel:1234567890", icon: "../src/assets/call.png", alt: "Call" },
-                { href: "mailto:example@mail.com", icon: "../src/assets/mail.png", alt: "Mail" },
+                {
+                    href: "mailto:example@mail.com",
+                    icon: "../src/assets/mail.png",
+                    alt: "Mail",
+                },
                 {
                     href: "https://www.linkedin.com/in/example",
                     icon: "../src/assets/linkedinw.png",
                     alt: "LinkedIn",
                 },
             ],
-        }
+        },
         // Add other team members here
     ];
 
@@ -40,8 +44,11 @@ const TeamMembers = () => {
                 {tabs.map((tab) => (
                     <button
                         key={tab.id}
-                        className={`px-4 py-2 rounded font-medium transition-colors 
-                        ${activeTab === tab.id ? "bg-[#3C4DC2] text-white" : "bg-blue-400 text-gray-800 hover:shadow-lg hover:shadow-black"}`}
+                        className={`px-4 py-2 rounded font-medium transition-colors
+                        ${activeTab === tab.id
+                                ? "bg-[#3C4DC2] text-white"
+                                : "bg-blue-400 text-gray-800 hover:shadow-custom hover:shadow-black"
+                            }`}
                         onClick={() => handleTabChange(tab.id)}
                     >
                         {tab.label}

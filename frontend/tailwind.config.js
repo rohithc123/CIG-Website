@@ -16,6 +16,9 @@ export default {
           'max-xl': { 'max': '1200px' }, // Custom max-width breakpoint
           'max-900': { 'max': '900px' }, // Custom max-width breakpoint
         },
+        boxShadow: {
+          'custom': '0px 0px 15px 4px rgba(0, 0, 0, 0.5)', // Define your shadow here
+        },
       },
     
     },
