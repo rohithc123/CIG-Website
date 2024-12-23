@@ -2,9 +2,11 @@ import React from "react";
 import Background from "../component/Background";
 import Popup from "../component/Popup";
 import ResearchCard from "../component/ResearchCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 const Blog = () => {
+
 
     const [selectedPerson, setSelectedPerson] = useState(null);
 
@@ -41,16 +43,16 @@ const Blog = () => {
             <Background />
             <div className="w-full flex overflow-hidden max-900:mt-[5vh] justify-center my-[20vh]">
                 <div className="aboutContent w-[90vw] flex max-900:flex-col-reverse max-900:items-center relative justify-evenly">
-                    <div className="aboutContentLeft w-[50vw] max-900:w-[80vw] max-900:mt-1" data-aos="fade-right">
-                        <div className="aboutContentInfo">
+                    <div className="w-[50vw] max-900:w-[80vw] max-900:mt-1">
+                        <div data-aos="fade-right" className="">
                             <p className="name text-5xl max-900:text-[24px] text-[#3C4DC2] my-6 max-900:my-3 font-montserrat">Corporate Leader Interaction</p>
                             <p className="tagline text-4xl max-900:text-[14px] text-[#1F1F1F] my-2 font-bold font-popins">
                                 Connect | Collaborate | Innovate
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-center max-900:w-[80vw]" data-aos="fade-left">
-                        <img src="./src/assets/cli.jpg" alt="PC Mohanty" className="" />
+                    <div className="flex items-center max-900:w-[80vw]">
+                        <img data-aos="fade-left" src="./src/assets/cli.jpg" alt="PC Mohanty" className="" />
                     </div>
                 </div>
             </div>

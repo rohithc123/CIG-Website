@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Layout from './Layout'
 import Home from './pages/Home'
@@ -6,8 +6,15 @@ import About from './pages/About'
 import Event from './pages/Event'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
-
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<Layout/>} >
