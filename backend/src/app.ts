@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 // import MongoConnection from "./../services/database";
 import teamRouter from "./../routes/team";
+import blogRouter from "./../routes/blog";
+import eventRouter from "./../routes/event";
 
 dotenv.config();
 const uri = process.env.MONGODB_URI;
@@ -43,6 +45,8 @@ const port = 5000;
 
 app.use(express.json());
 app.use(teamRouter);
+app.use(eventRouter);
+app.use(blogRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
