@@ -3,6 +3,29 @@
 
 import express from "express";
 import multer from "multer";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+// import MongoConnection from "./../services/database";
+import teamRouter from "./../routes/team";
+
+dotenv.config();
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  console.log(uri);
+  console.log("Define the MONGODB_URI environment variable inside .env");
+  process.exit(1);
+}
+
+mongoose
+  .connect(uri)
+  .then(() => {
+    console.log("Successfully connected");
+  })
+  .catch((err) => {
+    console.error("Connection error", err);
+    process.exit(1);
+  });
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -17,6 +40,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const app = express();
 const port = 5000;
+
+app.use(express.json());
+app.use(teamRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
