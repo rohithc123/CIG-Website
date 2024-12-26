@@ -65,7 +65,7 @@ const Contact = () => {
                         <div className="w-full max-900:p-9 h-full">
                             <iframe
                                 className="w-full h-full"
-                                src="https://www.google.com/maps/embed/v1/place?q=CIG+IITR,+Indian+Institute+of+Technology+Roorkee,+Roorkee,+Uttarakhand,+India&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3459.9412598392446!2d77.89748797434824!3d29.865967827007147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb36c210c7d2b%3A0x43a317fe732508db!2sCIG%20IITR!5e0!3m2!1sen!2sin!4v1735197783988!5m2!1sen!2sin"
                                 title="CIG IITR Location"
                             ></iframe>
                         </div>
