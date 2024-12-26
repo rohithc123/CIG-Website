@@ -18,12 +18,8 @@ const Header = () => {
 
     return (
         <header>
-            <nav style={{
-                boxShadow: "0px 0px 15px 4px rgba(0,0,0,0.5)",
-                WebkitBoxShadow: "0px 0px 15px 4px rgba(0,0,0,0.5)",
-                MozBoxShadow: "0px 0px 15px 4px rgba(0,0,0,0.5)",
-            }} className="w-full flex justify-between items-center py-2 px-9 bg-[#3C4DC2] shadow-md relative font-montserrat">
-                <div className="flex font-sans tracking-tight">
+            <nav className="w-full flex justify-between items-center shadow-custom py-2 px-9 bg-[#3C4DC2] relative font-montserrat">
+                <div className="flex">
                     <Link to="/"> <img src="./src/assets/iitr.png" alt="IITR Logo" className=" mx-2 my-0" /></Link>
                     <Link to="/"><img src="./src/assets/Logo.png" alt="Website Logo" className=" mx-2 my-0" /></Link>
                 </div>
@@ -42,7 +38,7 @@ const Header = () => {
                         } sm:flex sm:flex-row sm:items-center sm:space-x-8 sm:static sm:bg-transparent sm:w-auto sm:h-auto sm:translate-x-0`}
                 >
                     {menuItems.map((item, index) => (
-                        <li key={index} className={`max-xl:mt-10 pl-8 list-none`}>
+                        <li key={index} className={`pl-8 max-640:mt-10 list-none`}>
                             <Link
                                 to={item.link}
                                 className="relative max-xl:p-2 inline-block text-white no-underline text-center uppercase transition-all duration-150 ease-in-out group"

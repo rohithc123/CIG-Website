@@ -1,13 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import Background from "../component/Background";
 import Popup from "../component/Popup";
 import ResearchCard from "../component/ResearchCard";
-import { useState, useEffect } from "react";
 
 
 const Blog = () => {
-
-
     const [selectedPerson, setSelectedPerson] = useState(null);
 
     const people = [
@@ -85,10 +82,10 @@ const Blog = () => {
                                     onClick={() => setSelectedPerson(people[2])}
                                 />
                                 <ResearchCard
-                                    image={people[0].image}
-                                    name={people[0].name}
-                                    title={people[0].title}
-                                    onClick={() => setSelectedPerson(people[0])}
+                                    image={people[3].image}
+                                    name={people[3].name}
+                                    title={people[3].title}
+                                    onClick={() => setSelectedPerson(people[3])}
                                 />
                         </div>
                         {selectedPerson && (
@@ -101,7 +98,6 @@ const Blog = () => {
                             />
                         )}
                     </div>
-
                 </div>
             </div>
         </>
