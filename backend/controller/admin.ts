@@ -6,6 +6,32 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+export const createAdmin = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { email, password } = req.body;
+
+    // Check for existing admin with the same email
+    const existingAdmin = await Admin.findOne({ email: email });
+    if (existingAdmin) {
+      res.status(400).send("An admin with the same email exists");
+      return;
+    }
+    // Hash the password
+    let hashedPassword = await hash(password);
+    const admin = new Admin({ email, password: hashedPassword });
+    await admin.save();
+    res.send("Admin created successfully");
+  } catch (error) {
+    res
+      .status(500)
+      .send(`An error occurred while creating the admin: ${error}`);
+  }
+};
+
 export const adminLogin = async function (
   req: Request,
   res: Response
@@ -14,12 +40,9 @@ export const adminLogin = async function (
     const { email, password } = req.body;
 
     // let hashedPassword = await hash(password);
-
     const user = await Admin.findOne({
       email: email,
     });
-
-    // console.log(password);
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
       res.status(404).send("User not found or wrong password");
