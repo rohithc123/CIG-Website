@@ -6,12 +6,14 @@ dotenv.config();
 const secretKey: string = process.env.secretKey as string;
 
 interface Payload {
+  _id: string;
   email: string;
   password: string;
 }
 
-function generateToken(email: string, password: string): string {
+function generateToken(_id: string, email: string, password: string): string {
   const payload: Payload = {
+    _id: _id,
     email: email,
     password: password,
   };
