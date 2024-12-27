@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import TeamCard from "./TeamCard";
 
 const TeamMembers = () => {
@@ -21,21 +21,13 @@ const TeamMembers = () => {
             imgSrc: "../src/assets/director.jpeg",
             name: "Hardik",
             designation: "Executive",
-            contactLinks: [
-                { href: "tel:1234567890", icon: "../src/assets/call.png", alt: "Call" },
-                {
-                    href: "mailto:example@mail.com",
-                    icon: "../src/assets/mail.png",
-                    alt: "Mail",
-                },
-                {
-                    href: "https://www.linkedin.com/in/example",
-                    icon: "../src/assets/linkedinw.png",
-                    alt: "LinkedIn",
-                },
-            ],
+            contactLinks: {
+                call: "tel:1234567890",
+                mail: "mailto:example@mail.com",
+                linkedin: "https://www.linkedin.com/in/example",
+
+            },
         },
-        // Add other team members here
     ];
 
     return (

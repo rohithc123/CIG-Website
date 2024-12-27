@@ -11,15 +11,24 @@ const TeamCard = ({ imgSrc, name, designation, contactLinks }) => {
       <p className="text-white text-lg px-4 my-2 font-montserrat">{name}</p>
       <p className="text-white text-sm my-2 font-poppins">{designation}</p>
       <div className="flex w-full items-center pb-3 justify-evenly">
-        {contactLinks.map((link, index) => (
-          <a
-            href={link.href}
-            key={index}
-            className="text-white hover:text-blue-200 transition-colors"
-          >
-            <img src={link.icon} alt={link.alt} className="transition-opacity duration-100 hover:opacity-50 w-6 h-6" />
-          </a>
-        ))}
+        <a
+          href={contactLinks.call}
+          className="text-white hover:text-blue-200 transition-colors"
+        >
+          <img src="../src/assets/call.png" alt="call" className="transition-opacity duration-100 hover:opacity-50 w-6 h-6" />
+        </a>
+        <a
+          href={contactLinks.mail}
+          className="text-white hover:text-blue-200 transition-colors"
+        >
+          <img src="../src/assets/mail.png" alt="mail" className="transition-opacity duration-100 hover:opacity-50 w-6 h-6" />
+        </a>
+        <a
+          href={contactLinks.linkedin}
+          className="text-white hover:text-blue-200 transition-colors"
+        >
+          <img src="../src/assets/linkedinw.png" alt="linkedin" className="transition-opacity duration-100 hover:opacity-50 w-6 h-6" />
+        </a>
       </div>
     </div>
   );
