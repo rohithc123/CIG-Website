@@ -5,10 +5,18 @@ const Loader = () => {
   const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      const handleLoad = () => setLoading(false);
-      window.addEventListener('load', handleLoad);  
-      return () => window.removeEventListener('load', handleLoad);
-    }, []);
+    const handleLoad = () => setLoading(false);
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
   
     return (
       <>
