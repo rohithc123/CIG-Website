@@ -1,3 +1,6 @@
 node_modules/
 .env
+<<<<<<< HEAD
 dis/
+=======
+>>>>>>> ce80aa47fe0cd2917a9cf97ca9f48d437b5c54a9

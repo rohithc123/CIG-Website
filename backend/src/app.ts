@@ -1,5 +1,7 @@
 //TODO set up rate limit
 //TODO allow API access only from certain domains
+//TODO Add zod for runtime validation in controllers
+//TODO Use signed url for file upload
 
 import express from "express";
 import multer from "multer";
@@ -9,6 +11,7 @@ import mongoose from "mongoose";
 import teamRouter from "./../routes/team";
 import blogRouter from "./../routes/blog";
 import eventRouter from "./../routes/event";
+import adminRouter from './../routes/admin';
 
 dotenv.config();
 const uri = process.env.MONGODB_URI;
@@ -47,6 +50,7 @@ app.use(express.json());
 app.use(teamRouter);
 app.use(eventRouter);
 app.use(blogRouter);
+app.use(adminRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
