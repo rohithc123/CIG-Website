@@ -45,7 +45,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const app = express();
 const port = 5000;
-app.use(express.static("dis"))
+// app.use(express.static("dis"))
 app.use(express.json());
 app.use(teamRouter);
 app.use(eventRouter);
