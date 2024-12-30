@@ -1,0 +1,4 @@
+[submodule "cig-iitr"]
+	path = cig-iitr
+	url = https://github.com/rohithc123/CIG-Website/cig-iitr
+	branch = Samyak
