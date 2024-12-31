@@ -85,7 +85,7 @@ const Event = () => {
             </div>
             <div className="w-full h-auto bg-[#f7f7f7]">
                 <div className="w-full h-180px max-900:h-auto bg-[#3C4DC2]">
-                    <h1 className="text-white font-montserrat text-4xl max-900:text-2xl py-16 text-center">Recent Interactions</h1>
+                    <h1 className="text-white font-montserrat text-4xl max-900:text-2xl py-16 text-center">Recent Initiatives</h1>
                 </div>
                 <div>
 
