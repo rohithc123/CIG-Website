@@ -147,7 +147,7 @@ const Home = () => {
                 style={{
                     boxShadow: "0px 0px 15px 4px rgba(151, 151, 151, 0.5)",
                 }}
-                className="w-screen overflow-hidden flex bg-[#3C4DC2] pb-[1%] justify-evenly"
+                className="w-full overflow-hidden flex bg-[#3C4DC2] pb-[1%] justify-evenly"
                 data-aos="zoom-in-down"
             >
                 <div className="w-auto max-900:w-[436px] h-auto max-900:h-[119px] py-6 flex flex-col items-center">

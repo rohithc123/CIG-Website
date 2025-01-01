@@ -3,7 +3,7 @@ import React from "react";
 const Popup = ({ isVisible, onClose, name, image, description }) => {
   return isVisible ? (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white w-auto max-900:w-[90vw] p-7 rounded shadow-lg relative">
+      <div className="bg-white w-auto max-w-[90%] max-900:w-[90vw] p-7 rounded shadow-lg relative">
         <h1 className="text-2xl right-[120px] mr-[99px] font-montserrat text-[#3C4DC2] top-4 pb-8 max-900:pb-4 max-900:mr-[15px]">
           {name}
         </h1>
