@@ -11,7 +11,7 @@ const AdminBlog = () => {
     // Fetch data from API
     const fetchBlogData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/admin/getBlog', {
+        const response = await fetch('/api/admin/getBlog', {
           method: "GET",
           headers: {
             Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminBlog = () => {
   
     const deleteUser = async (id) => {
       try {
-        const response = await fetch(`http://localhost:3000/api/admin/BlogUploads/delete/${id}`, {
+        const response = await fetch(`/api/admin/BlogUploads/delete/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: AuthorizationToken,
@@ -88,7 +88,7 @@ const AdminBlog = () => {
   
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/admin/BlogUploads',
+          '/api/admin/BlogUploads',
           uploadData,
           {
             headers: {

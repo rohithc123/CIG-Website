@@ -11,7 +11,7 @@ const AdminTestimonial = () => {
   // Fetch data from API
   const fetchTestimonials = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getTestimonials', {
+      const response = await fetch('/api/admin/getTestimonials', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminTestimonial = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/Testimonialsuploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/Testimonialsuploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -90,7 +90,7 @@ const AdminTestimonial = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/Testimonialsuploads',
+        '/api/admin/Testimonialsuploads',
         uploadData,
         {
           headers: {

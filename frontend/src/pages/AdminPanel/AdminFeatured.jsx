@@ -11,7 +11,7 @@ const AdminFeatured = () => {
   // Fetch data from API
   const fetchFeaturedWorks = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getFeaturedWorks', {
+      const response = await fetch('/api/admin/getFeaturedWorks', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminFeatured = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/FeaturedWorksuploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/FeaturedWorksuploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -87,7 +87,7 @@ const AdminFeatured = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/FeaturedWorksuploads',
+        '/api/admin/FeaturedWorksuploads',
         uploadData,
         {
           headers: {

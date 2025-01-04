@@ -11,7 +11,7 @@ const Home = () => {
 
     const fetchcollaborations = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getcollaborations', {
+            const response = await fetch('/api/admin/getcollaborations', {
                 method: "GET",
             });
             if (response.ok) {
@@ -34,7 +34,7 @@ const Home = () => {
 
     const fetchFeaturedWorks = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getFeaturedWorks', {
+            const response = await fetch('/api/admin/getFeaturedWorks', {
                 method: "GET",
             });
             if (response.ok) {
@@ -56,7 +56,7 @@ const Home = () => {
 
     const fetchTestimonials = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getTestimonials', {
+            const response = await fetch('/api/admin/getTestimonials', {
                 method: "GET",
             });
             if (response.ok) {

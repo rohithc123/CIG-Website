@@ -11,7 +11,7 @@ const AdminHead = () => {
   // Fetch data from API
   const fetchHeadData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getteamMembers', {
+      const response = await fetch('/api/admin/getteamMembers', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminHead = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/teamMembersUploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/teamMembersUploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -93,7 +93,7 @@ const AdminHead = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/teamMembersUploads',
+        '/api/admin/teamMembersUploads',
         uploadData,
         {
           headers: {

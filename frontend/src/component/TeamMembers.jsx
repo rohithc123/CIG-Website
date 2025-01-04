@@ -6,7 +6,7 @@ const TeamMembers = () => {
 
     const fetchTeamData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getteamMembersV', {
+            const response = await fetch('/api/admin/getteamMembersV', {
                 method: "GET",
             });
             if (response.ok) {

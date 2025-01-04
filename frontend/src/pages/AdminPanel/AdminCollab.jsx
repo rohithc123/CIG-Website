@@ -11,7 +11,7 @@ const AdminCollab = () => {
   // Fetch data from API
   const fetchcollaborations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getcollaborations', {
+      const response = await fetch('/api/admin/getcollaborations', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminCollab = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/collaborationsuploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/collaborationsuploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -87,7 +87,7 @@ const AdminCollab = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/collaborationsuploads',
+        '/api/admin/collaborationsuploads',
         uploadData,
         {
           headers: {

@@ -11,7 +11,7 @@ const AdminPatron = () => {
   // Fetch data from API
   const fetchPatronData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getpatroncards', {
+      const response = await fetch('/api/admin/getpatroncards', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminPatron = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/patroncardsuploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/patroncardsuploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -90,7 +90,7 @@ const AdminPatron = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/patroncardsuploads',
+        '/api/admin/patroncardsuploads',
         uploadData,
         {
           headers: {

@@ -205,7 +205,7 @@ const About = () => {
     // Fetch teamMembers data from MongoDB (via backend API)
     const fetchTeamData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getteamMembers', {
+            const response = await fetch('/api/admin/getteamMembers', {
                 method: "GET",
             });
             if (response.ok) {
@@ -226,7 +226,7 @@ const About = () => {
     // Fetch PatronCard data from MongoDB (via backend API)
     const fetchPatronData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getpatroncards', {
+            const response = await fetch('/api/admin/getpatroncards', {
                 method: "GET",
             });
             if (response.ok) {

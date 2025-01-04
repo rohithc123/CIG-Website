@@ -11,7 +11,7 @@ const AdminEvent = () => {
   // Fetch data from API
   const fetchEventData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/getEvent', {
+      const response = await fetch('/api/admin/getEvent', {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -30,7 +30,7 @@ const AdminEvent = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/EventUploads/delete/${id}`, {
+      const response = await fetch(`/api/admin/EventUploads/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: AuthorizationToken,
@@ -88,7 +88,7 @@ const AdminEvent = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/admin/EventUploads',
+        '/api/admin/EventUploads',
         uploadData,
         {
           headers: {

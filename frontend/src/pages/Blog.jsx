@@ -9,7 +9,7 @@ const Blog = () => {
     // Fetch teamMembers data from MongoDB (via backend API)
     const fetchBlogData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/getBlog', {
+            const response = await fetch('/api/admin/getBlog', {
                 method: "GET",
             });
             if (response.ok) {
