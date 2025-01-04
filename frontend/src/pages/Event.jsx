@@ -1,70 +1,95 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from 'react';
 import Background from "../component/Background";
-import Popup from "../component/Popup";
-import ResearchCard from "../component/ResearchCard";
+
 
 const Event = () => {
     const [selectedPerson, setSelectedPerson] = useState(null);
+    const [EventData, setEventData] = useState([]);
 
-    const people = [
-        {
-            image: "../src/assets/event/ukps/ukps1.png",
-            name: "Uttrakhand Plastics Summit' 2023",
-            title: "Date: 10/10/2023",
-            description: "A summit focused on sustainable plastic use in Uttarakhand.",
-        },
-        {
-            image: "../src/assets/event/5g/5g1.png",
-            name: "5G Lab, Global Digital Innovation",
-            title: "Date: 27/10/2023",
-            description: "Innovations in 5G technology and global advancements.",
-        },
-        {
-            image: "../src/assets/event/swaraj/swaraj1.png",
-            name: "CLS by Prof. Chetan Singh Solanki, Swaraj Foundation",
-            title: "Date: 9/04/2023",
-            description: "A lecture on sustainability and renewable energy by Prof. Solanki.",
-        },
-        {
-            image: "../src/assets/event/army/army1.png",
-            name: "Army Weapon Exhibition, 15 Garhwal Rifles",
-            title: "Date: 14/08/2023",
-            description: "An exhibition showcasing modern weaponry by the Indian Army.",
-        },
-        {
-            image: "../src/assets/event/alumTalk/alumTalk1.jpg",
-            name: "Corporate Alumni Talk' 2023",
-            title: "Date: 7/04/2023",
-            description: "An interactive session with alumni sharing corporate experiences.",
-        },
-        {
-            image: "../src/assets/event/ukum/ukum1.png",
-            name: "Uttrakhand Udyog Mahotsava' 2023",
-            title: "Date: 18/03/2023",
-            description: "A celebration of industries and entrepreneurship in Uttarakhand.",
-        },
-        {
-            image: "../src/assets/event/ird/ird1.jpg",
-            name: "Institute Research Day' 2023",
-            title: "Date: 13/03/2023",
-            description: "A showcase of innovative research projects at the institute.",
-        },
-        {
-            image: "../src/assets/event/ind/ind1.jpg",
-            name: "Industrial Visit to HeroMoto Corp.",
-            title: "Date: 11/02/2023",
-            description: "An educational visit to the HeroMoto Corp manufacturing unit.",
-        },
-        {
-            image: "../src/assets/event/wrksp/wrksp1.png",
-            name: "MathWorks Workshop",
-            title: "Date: 30/11/2021",
-            description: "A workshop on advanced computational tools and techniques by MathWorks.",
-        },
-    ];
-    
+    // Fetch teamMembers data from MongoDB (via backend API)
+    const fetchEventData = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/admin/getEvent', {
+                method: "GET",
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setEventData(data.photos); // Assuming the data returned has a 'patrons' array
+            } else {
+                console.error("Error fetching patron data");
+            }
+        } catch (error) {
+            console.error('Error fetching patron data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchEventData();
+    }, []);
 
     const closePopup = () => setSelectedPerson(null);
+
+    const ResearchCard = ({ image, date, title, onClick }) => {
+        return (
+            // <div
+            //     className="shadow-md w-auto  p-4 mb-10 transition-transform transform hover:scale-105"
+            //     data-aos="fade-up"
+            // >
+            //     <img src={image} alt={title} className="mb-4 w-72 h-auto" />
+            //     <div className="flex justify-between items-center">
+            //         <div>
+            //             <h5 className="text-lg font-montserrat text-[#1f1f1f] mb-4">{title}</h5>
+            //             <p className="text-[16px] font-poppins text-[#1f1f1f]">{date}</p>
+            //         </div>
+            //         <button onClick={onClick} className="">
+            //             <img src="../src/assets/send.png" alt="Details" className="rounded-full h-9" />
+            //         </button>
+            //     </div>
+            // </div>
+
+            <div
+
+                className="flex flex-col font-poppins gap-8 bg-white p-4 shadow-md rounded-lg"
+            >
+                <img src={image} alt={title}
+                    className="rounded-xl w-auto h-[250px]"
+                />
+                <div className="flex flex-col justify-center">
+                    <div className="font-medium text-2xl">{title}</div>
+                    <div className="text-[#183059] font-medium text-base">{date}</div>
+                    <div className="text-[#909090] bg-[#909090] w-full h-[2px] my-4"></div>
+                    <button onClick={onClick}  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                    Details
+                    </button>
+                </div>
+
+            </div>
+
+        );
+    };
+
+    const Popup = ({ isVisible, onClose, title, description }) => {
+        return isVisible ? (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-white w-auto max-900:w-[90vw] p-7 rounded shadow-lg relative">
+                    <h1 className="text-2xl right-[120px] mr-[99px] font-montserrat text-[#3C4DC2] top-4 pb-8 max-900:pb-4 max-900:mr-[15px]">
+                        {title}
+                    </h1>
+                    <div
+                        onClick={onClose}
+                        className="w-[100px] max-900:w-[55px] h-[36px] max-900:h-[30px] absolute top-7 right-4 max-900:top-7 max-900:right-2 cursor-pointer bg-[#3C4DC2] flex items-center shadow-custom justify-center"
+                    >
+                        <button className="font-montserrat text-[12px] max-900:text-[9px] text-white">
+                            <i className="fas fa-times"></i>&nbsp; Close
+                        </button>
+                    </div>
+                    <p className="text-[#1f1f1f] font-poppins text-sm mb-3">
+                        {description}
+                    </p>
+                </div>
+            </div>
+        ) : null;
+    };
     return (
         <>
             <Background />
@@ -85,49 +110,28 @@ const Event = () => {
             </div>
             <div className="w-full h-auto bg-[#f7f7f7]">
                 <div className="w-full h-180px max-900:h-auto bg-[#3C4DC2]">
-                    <h1 className="text-white font-montserrat text-4xl max-900:text-2xl py-16 text-center">Recent Initiatives</h1>
+                    <h1 className="text-white font-montserrat text-4xl max-900:text-2xl py-16 text-center">Recent Interactions</h1>
                 </div>
-                <div>
-
-                    <div className="px-4 py-8">
-                        <div className="flex max-900:flex-col justify-evenly max-900:items-center">
-                                <ResearchCard
-                                    image={people[0].image}
-                                    name={people[0].name}
-                                    title={people[0].title}
-                                    onClick={() => setSelectedPerson(people[0])}
-                                />
-                                <ResearchCard
-                                    image={people[1].image}
-                                    name={people[1].name}
-                                    title={people[1].title}
-                                    onClick={() => setSelectedPerson(people[1])}
-                                />
-                        </div>
-                        <div className="flex max-900:flex-col justify-evenly max-900:items-center">
-                                <ResearchCard
-                                    image={people[2].image}
-                                    name={people[2].name}
-                                    title={people[2].title}
-                                    onClick={() => setSelectedPerson(people[2])}
-                                />
-                                <ResearchCard
-                                    image={people[3].image}
-                                    name={people[3].name}
-                                    title={people[3].title}
-                                    onClick={() => setSelectedPerson(people[3])}
-                                />
-                        </div>
-                        {selectedPerson && (
-                            <Popup
-                                isVisible={!!selectedPerson}
-                                onClose={closePopup}
-                                name={selectedPerson.name}
-                                image={selectedPerson.image}
-                                description={selectedPerson.description}
+                <div className="flex justify-center items-center min-h-screen w-[100%] bg-gray-100">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto p-4">
+                        {EventData.map((person, index) => (
+                            <ResearchCard
+                                key={index}
+                                image={`http://localhost:3000/${person.path}`}
+                                title={person.title}
+                                date={person.date}
+                                onClick={() => setSelectedPerson(person)}
                             />
-                        )}
+                        ))}
                     </div>
+                    {selectedPerson && (
+                        <Popup
+                            isVisible={!!selectedPerson}
+                            onClose={closePopup}
+                            title={selectedPerson.title}
+                            description={selectedPerson.description}
+                        />
+                    )}
                 </div>
             </div>
         </>

@@ -1,56 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import Background from "../component/Background";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 const Home = () => {
-    const collaborations = [
-        { src: "../src/assets/Collaborations/ukum.png", name: "Uttarakhand Udyog Mahotsava" },
-        { src: "../src/assets/Collaborations/heroMotoCorp.png", name: "Hero MotoCorp" },
-        { src: "../src/assets/Collaborations/mathWorks.png", name: "MathWorks" },
-        { src: "../src/assets/Collaborations/samsung.png", name: "Samsung" },
-    ];
-    const works = [
-        {
-            img: "../src/assets/event/ukum/ukum1.png",
-            title: "Uttarakhand Udyog Mahotsava' 2023",
-        },
-        {
-            img: "../src/assets/event/cls/cls3.png",
-            title: "CLS by Prof. Chetan Singh Solanki",
-        },
-        {
-            img: "../src/assets/event/alumTalk/alumTalk1.jpg",
-            title: "Corporate Alumni Talk",
-        },
-    ];
-    const testimonials = [
-        {
-            name: "Hardik",
-            title: "Chairperson",
-            img: "../src/assets/testi.avif",
-            description:
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci expedita aut nisi aperiam debitis, pariatur eaque quidem repudiandae doloribus quisquam id dignissimos delectus magni dicta incidunt, numquam animi.",
-        },
-        {
-            name: "Chinmay Nagpal",
-            title: "Vice-Chairperson",
-            img: "../src/assets/testi.avif",
-            description:
-                "Sapiente earum cum dolore incidunt sed dolores recusandae commodi, sequi iste? Officiis repellendus quos aut sit fuga eum, blanditiis illo eveniet mollitia omnis veniam repellat assumenda.",
-        },
-        {
-            name: "Yash Awasthi",
-            title: "Head of Content",
-            img: "../src/assets/testi.avif",
-            description:
-                "Eum nostrum, accusamus est aspernatur dolor, ipsum quod debitis modi quidem fugiat saepe, eligendi blanditiis perferendis esse in tempora ex enim?",
-        },
-    ];
+
+
+    const [collaborations, setcollaborations] = useState([]);
+
+    const fetchcollaborations = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/admin/getcollaborations', {
+                method: "GET",
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setcollaborations(data.photos); // Assuming the data returned has a 'patrons' array
+            } else {
+                console.error("Error fetching patron data");
+            }
+        } catch (error) {
+            console.error('Error fetching patron data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchcollaborations();
+    }, []);
+
+
+    const [FeaturedWorks, setFeaturedWorks] = useState([]);
+
+    const fetchFeaturedWorks = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/admin/getFeaturedWorks', {
+                method: "GET",
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setFeaturedWorks(data.photos); // Assuming the data returned has a 'patrons' array
+            } else {
+                console.error("Error fetching patron data");
+            }
+        } catch (error) {
+            console.error('Error fetching patron data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchFeaturedWorks();
+    }, []);
+
+    const [Testimonials, setTestimonials] = useState([]);
+
+    const fetchTestimonials = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/admin/getTestimonials', {
+                method: "GET",
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setTestimonials(data.photos); // Assuming the data returned has a 'patrons' array
+            } else {
+                console.error("Error fetching patron data");
+            }
+        } catch (error) {
+            console.error('Error fetching patron data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchTestimonials();
+    }, []);
+
+
+
 
     return (
-        <>
+        <div className=' overflow-hidden'>
             <Background />
             <div className="w-full flex overflow-hidden max-900:mt-[5vh] justify-center my-[20vh]">
                 <div className="aboutContent w-[90vw] flex max-900:flex-col-reverse max-900:items-center relative justify-evenly">
@@ -74,7 +102,7 @@ const Home = () => {
             </div>
             <div className="w-full overflow-hidden flex justify-center">
                 <div className="w-[90vw] flex max-900:flex-col-reverse justify-evenly">
-                    <div className="flex w-[50vw] max-900:w-[80vw] max-900:my-6 items-center">
+                    <div className="flex w-[50vw] justify-start max-900:w-[80vw] max-900:my-6 items-center">
                         <img src="../src/assets/corporate.png" alt="corporate" />
                     </div>
 
@@ -137,8 +165,7 @@ const Home = () => {
                             </a>
                         </div>
                     </div>
-
-                    <div className="flex w-[50vw] max-900:w-[80vw] max-900:my-6 items-center">
+                    <div className="flex w-[50vw] justify-end max-900:w-[80vw] max-900:my-6 items-center">
                         <img src="../src/assets/academic.png" alt="academic" />
                     </div>
                 </div>
@@ -147,7 +174,7 @@ const Home = () => {
                 style={{
                     boxShadow: "0px 0px 15px 4px rgba(151, 151, 151, 0.5)",
                 }}
-                className="w-full overflow-hidden flex bg-[#3C4DC2] pb-[1%] justify-evenly"
+                className="w-[100vw] overflow-hidden flex bg-[#3C4DC2] pb-[1%] justify-evenly"
                 data-aos="zoom-in-down"
             >
                 <div className="w-auto max-900:w-[436px] h-auto max-900:h-[119px] py-6 flex flex-col items-center">
@@ -189,7 +216,7 @@ const Home = () => {
                             className="w-1/5 max-900:w-4/5 max-900:my-5 bg-white shadow-xl hover:shadow-2xl transition-shadow duration-1000 ease-in-out p-6 text-center mb-6"
                         >
                             <img
-                                src={collaboration.src}
+                                src={`http://localhost:3000/${collaboration.path}`}
                                 alt={collaboration.name}
                                 className="mb-4 w-[150px] h-[150px] mx-auto"
                             />
@@ -204,25 +231,25 @@ const Home = () => {
                 <h1 className="text-white text-2xl font-bold mb-6 text-center">
                     Featured Works
                 </h1>
-                <Swiper 
-                navigation={{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                }} 
-                modules={[Navigation]} 
-                speed={1000}
-                className="mySwiper w-[70vw] max-900:w-full">
-                    {works.map((work, index) => (
+                <Swiper
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }}
+                    modules={[Navigation]}
+                    speed={1000}
+                    className="mySwiper w-[70vw] max-900:w-full">
+                    {FeaturedWorks.map((work, index) => (
                         <SwiperSlide
                             key={index}
                             className="flex flex-col max-900:w-[50vw] items-center justify-center font-poppins w-[420px]">
                             <div className="flex flex-col justify-center items-center">
                                 <img
-                                    src={work.img}
-                                    alt={work.title}
+                                    src={`http://localhost:3000/${work.path}`}
+                                    alt={work.heading}
                                     className="w-[60%] max-900:w-[70%] items-center shadow-lg mb-4"
                                 />
-                                <h3 className="text-white text-lg text-center">{work.title}</h3>
+                                <h3 className="text-white text-lg text-center">{work.heading}</h3>
                             </div>
                         </SwiperSlide>
                     ))}
@@ -247,22 +274,22 @@ const Home = () => {
                     speed={1000}
                     className="mySwiper work-slide w-[70vw] max-900:w-full"
                 >
-                    {testimonials.map((testimonial, index) => (
+                    {Testimonials.map((testimonial, index) => (
                         <SwiperSlide
-                        key={index}
-                        className="testi-slide bg-no-repeat bg-left bg-[url('../src/assets/comma.png')] flex flex-col items-center justify-center text-center p-6"
-                    >
-                        <div className="slideBar flex justify-center items-center mb-4 w-full">
-                            <img
-                                src={testimonial.img}
-                                alt={testimonial.name}
-                                className="rounded-full w-[10vw] h-[23vh] max-900:w-52 max-900:h-52 object-cover"
-                            />
-                        </div>
-                        <h2 className="font-semibold text-lg">{testimonial.name}</h2>
-                        <h4 className="text-sm font-medium">{testimonial.title}</h4>
-                        <p className="text-sm text-center mt-2">{testimonial.description}</p>
-                    </SwiperSlide>
+                            key={index}
+                            className="testi-slide bg-no-repeat bg-left bg-[url('../src/assets/comma.png')] flex flex-col items-center justify-center text-center p-6"
+                        >
+                            <div className="slideBar flex justify-center items-center mb-4 w-full">
+                                <img
+                                    src={`http://localhost:3000/${testimonial.path}`}
+                                    alt={testimonial.name}
+                                    className="rounded-full w-[10vw] h-[23vh] max-900:w-52 max-900:h-52 object-cover"
+                                />
+                            </div>
+                            <h2 className="font-semibold text-lg">{testimonial.name}</h2>
+                            <h4 className="text-sm font-medium">{testimonial.designation}</h4>
+                            <p className="text-sm text-center mt-2">{testimonial.description}</p>
+                        </SwiperSlide>
                     ))}
                     <div
                         className="swiper-button-next text-black pr-8"
@@ -274,7 +301,7 @@ const Home = () => {
                     ></div>
                 </Swiper>
             </div>
-        </>
+        </div>
     );
 };
 
