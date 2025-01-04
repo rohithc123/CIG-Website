@@ -20,12 +20,16 @@ const Testimonialsuploads = async (req, res) => {
 };
 const getTestimonials = async (req, res) => {
   try {
-    const photos = await TestimonialsModel.find();
+    const oldphotos = await TestimonialsModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
 
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
     res.status(200).json({ photos });
   } catch (error) {
     console.error(`Error fetching images: ${error}`);
@@ -63,12 +67,16 @@ const collaborationsuploads = async (req, res) => {
 };
 const getcollaborations = async (req, res) => {
   try {
-    const photos = await collaborationsModel.find();
+    const oldphotos = await collaborationsModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
 
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
     res.status(200).json({ photos });
   } catch (error) {
     console.error(`Error fetching images: ${error}`);
@@ -107,11 +115,16 @@ const FeaturedWorksuploads = async (req, res) => {
 
 const getFeaturedWorks = async (req, res) => {
   try {
-    const photos = await FeaturedWorksModel.find();
+    const oldphotos = await FeaturedWorksModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
@@ -119,6 +132,7 @@ const getFeaturedWorks = async (req, res) => {
     res.status(500).json({ message: 'Server error.' });
   }
 };
+
 
 const deleteFeaturedWorksById = async (req, res) => {
   try {
@@ -152,11 +166,16 @@ const patroncardsuploads = async (req, res) => {
 
 const getpatroncards = async (req, res) => {
   try {
-    const photos = await patroncardsModel.find();
+    const oldphotos = await patroncardsModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
@@ -198,11 +217,16 @@ const BlogUploads = async (req, res) => {
 
 const getBlog = async (req, res) => {
   try {
-    const photos = await BlogModel.find();
+    const oldphotos = await BlogModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
@@ -243,11 +267,16 @@ const EventUploads = async (req, res) => {
 
 const getEvent = async (req, res) => {
   try {
-    const photos = await EventModel.find();
+    const oldphotos = await EventModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
@@ -289,11 +318,16 @@ const teamMembersUploads = async (req, res) => {
 
 const getteamMembers = async (req, res) => {
   try {
-    const photos = await teamMembersModel.find();
+    const oldphotos = await teamMembersModel.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
@@ -335,11 +369,16 @@ const teamMembersUploadsV = async (req, res) => {
 
 const getteamMembersV = async (req, res) => {
   try {
-    const photos = await teamMembersModelV.find();
+    const oldphotos = await teamMembersModelV.find();
 
-    if (!photos || photos.length === 0) {
+    if (!oldphotos || oldphotos.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
+
+    const photos = oldphotos.map(photo => ({
+      ...photo._doc,
+      url: `${req.protocol}://${req.get('host')}/uploads/${photo.filename}`,
+    }));
 
     res.status(200).json({ photos });
   } catch (error) {
