@@ -153,7 +153,7 @@ const AdminPatron = () => {
               >
                 <img
                   className="rounded-xl w-[200px] h-[250px]"
-                  src={`http://localhost:3000/${data.path}`}
+                  src={data.url}
                   alt=""
                 />
                 <div className="flex flex-col justify-center">

@@ -117,7 +117,7 @@ const Event = () => {
                         {EventData.map((person, index) => (
                             <ResearchCard
                                 key={index}
-                                image={`http://localhost:3000/${person.path}`}
+                                image={person.url}
                                 title={person.title}
                                 date={person.date}
                                 onClick={() => setSelectedPerson(person)}

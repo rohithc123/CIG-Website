@@ -216,7 +216,7 @@ const Home = () => {
                             className="w-1/5 max-900:w-4/5 max-900:my-5 bg-white shadow-xl hover:shadow-2xl transition-shadow duration-1000 ease-in-out p-6 text-center mb-6"
                         >
                             <img
-                                src={`http://localhost:3000/${collaboration.path}`}
+                                src={collaboration.url}
                                 alt={collaboration.name}
                                 className="mb-4 w-[150px] h-[150px] mx-auto"
                             />
@@ -245,7 +245,7 @@ const Home = () => {
                             className="flex flex-col max-900:w-[50vw] items-center justify-center font-poppins w-[420px]">
                             <div className="flex flex-col justify-center items-center">
                                 <img
-                                    src={`http://localhost:3000/${work.path}`}
+                                    src={work.url}
                                     alt={work.heading}
                                     className="w-[60%] max-900:w-[70%] items-center shadow-lg mb-4"
                                 />
@@ -281,7 +281,7 @@ const Home = () => {
                         >
                             <div className="slideBar flex justify-center items-center mb-4 w-full">
                                 <img
-                                    src={`http://localhost:3000/${testimonial.path}`}
+                                    src={testimonial.url}
                                     alt={testimonial.name}
                                     className="rounded-full w-[10vw] h-[23vh] max-900:w-52 max-900:h-52 object-cover"
                                 />

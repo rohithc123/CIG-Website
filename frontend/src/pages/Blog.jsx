@@ -68,7 +68,7 @@ const Blog = () => {
         );
     };
 
-    const Popup = ({ isVisible, onClose, name, image, description }) => {
+    const Popup = ({ isVisible, onClose, name, description }) => {
         return isVisible ? (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-white w-auto max-900:w-[90vw] p-7 rounded shadow-lg relative">
@@ -94,7 +94,6 @@ const Blog = () => {
     return (
         <>
             <Background />
-
             <div className="w-full flex overflow-hidden max-900:mt-[5vh] justify-center my-[20vh]">
                 <div className="aboutContent w-[90vw] flex max-900:flex-col-reverse max-900:items-center relative justify-evenly">
                     <div className="w-[50vw] max-900:w-[80vw] max-900:mt-1">
@@ -119,7 +118,7 @@ const Blog = () => {
                         {BlogData.map((person, index) => (
                             <ResearchCard
                                 key={index}
-                                image={`http://localhost:3000/${person.path}`}
+                                image={person.url}
                                 name={person.name}
                                 title={person.title}
                                 onClick={() => setSelectedPerson(person)}
